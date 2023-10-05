@@ -1,0 +1,230 @@
+:root {
+  --black: #313131;
+  --white: #fff;
+  --red: red;
+  --gray: rgb(155, 155, 155);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@keyframes rotations {
+  0% {
+    transform: rotate(0deg) translate(10px);
+  }
+  50% {
+    transform: rotate(180deg) translate(10px);
+  }
+  100% {
+    transform: rotate(360deg) translate(10px);
+  }
+}
+@keyframes leftToright {
+  0% {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(100%);
+  }
+}
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  max-width: 100%;
+  background-color: var(--gray);
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+header .links {
+  width: 100%;
+  height: 10%;
+  padding: 0 2rem;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.3rem;
+  color: var(--white);
+}
+header .links .logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+header .links .logo .credit {
+  padding-right: 0.5rem;
+}
+header .links ul {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+header .links ul li a .btn-text {
+  padding: 0 0.7rem;
+  padding-bottom: 2px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header .links ul li a .btn-text .btn-text-inner {
+  color: var(--white);
+  padding: 0.5rem 0;
+}
+header .links ul li a .btn-text::after {
+  content: "";
+  width: 1rem;
+  height: 2px;
+  background-color: var(--black);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+header .links ul li a .btn-text:hover {
+  padding-bottom: 0;
+}
+header .links ul li a .btn-text:hover::after {
+  opacity: 1;
+}
+header .mainWrap {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .mainWrap .specialisation {
+  width: 500px;
+  height: 200px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  margin-right: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+header .mainWrap .specialisation .specialisationIcone {
+  position: absolute;
+  top: -50%;
+  left: 0;
+}
+header .mainWrap .specialisation .specialisationIcone i {
+  transform: rotate(-45deg);
+  font-size: 2rem;
+  color: var(--white);
+}
+header .mainWrap .specialisation .specialisationName h4 {
+  display: flex;
+  flex-direction: column;
+  color: var(--white);
+  font-size: 2.5rem;
+}
+header .mainWrap .specialisation:before {
+  content: "";
+}
+header .mainWrap .location {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: var(--black);
+}
+header .mainWrap .location .locationName {
+  width: 15rem;
+  height: 6rem;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: all 0.5s;
+}
+header .mainWrap .location .locationName span {
+  color: var(--white);
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  text-transform: capitalize;
+}
+header .mainWrap .location .locationIcone {
+  width: 6rem;
+  height: 6rem;
+  background-color: var(--black);
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .mainWrap .location .locationIcone .backgroundIcone {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--gray);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header .mainWrap .location .locationIcone .backgroundIcone i {
+  font-size: 2.2rem;
+  animation: rotations 3s linear infinite;
+}
+header .mainWrap .location .locationIcone .backgroundIcone:hover i {
+  animation-play-state: paused;
+}
+header .mainWrap .location:hover .locationName {
+  width: 20rem;
+  padding: 1rem 5cqi;
+}
+header .mainWrap .bigName {
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  left: 0;
+  bottom: 0rem;
+  padding: 1rem 0;
+}
+header .mainWrap .bigName .namewrap h1 {
+  font-size: 15rem;
+  display: flex;
+  align-items: center;
+}
+header .mainWrap .bigName .namewrap h1 span {
+  margin: 0 3rem;
+  color: var(--white);
+  letter-spacing: 0.5rem;
+  font-weight: 300;
+}
+header .mainWrap .bigName .namewrap h1::after {
+  content: "";
+  width: 6rem;
+  height: 0.8rem;
+  background-color: var(--white);
+  display: block;
+  animation: leftToright 5s linear infinite;
+}
+header .profilImg {
+  transform: scale(1.5);
+}/*# sourceMappingURL=global.css.map */
