@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Young+Serif&display=swap");
 :root {
   --black: #313131;
   --white: #fff;
   --red: red;
   --gray: rgb(155, 155, 155);
+  --orange: rgb(255, 102, 0);
 }
 
 * {
@@ -11,6 +13,61 @@
   box-sizing: border-box;
 }
 
+@keyframes topToBotom {
+  0% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes leftToright {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+    color: var(--white);
+  }
+  50% {
+    transform: translateX(0);
+    color: var(--orange);
+  }
+  100% {
+    color: var(--white);
+    opacity: 1;
+  }
+}
+@keyframes rightToLeft {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+    color: var(--white);
+  }
+  50% {
+    transform: translateX(0);
+    color: var(--orange);
+  }
+  100% {
+    color: var(--white);
+    opacity: 1;
+  }
+}
+@keyframes deleterightToLeft {
+  0% {
+    transform: translateX(0);
+    color: var(--white);
+    display: flex;
+  }
+  50% {
+    color: var(--orange);
+  }
+  100% {
+    transform: translateX(-200px);
+    color: var(--white);
+    display: none;
+  }
+}
 @keyframes rotations {
   0% {
     transform: rotate(0deg) translate(10px);
@@ -22,15 +79,12 @@
     transform: rotate(360deg) translate(10px);
   }
 }
-@keyframes leftToright {
+@keyframes movelettre {
   0% {
-    transform: translate(0);
-  }
-  50% {
-    transform: translate(0);
+    transform: scale(1, 1);
   }
   100% {
-    transform: translate(100%);
+    transform: scale(2, 2);
   }
 }
 ul {
@@ -43,7 +97,7 @@ a {
 
 body {
   max-width: 100%;
-  background-color: var(--gray);
+  background-color: var(--black);
 }
 
 header {
@@ -70,11 +124,59 @@ header .links .logo {
 }
 header .links .logo .credit {
   padding-right: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+header .links .logo .credit span:first-child {
+  opacity: 1;
+  animation: none;
+}
+header .links .logo .credit span:last-child {
+  opacity: 0;
+  animation: leftToright 0.1s ease forwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+header .links .logo .cbettabaa .nomPrenom {
+  width: 20%;
+  display: flex;
+}
+header .links .logo .cbettabaa .nomPrenom .nom, header .links .logo .cbettabaa .nomPrenom .prenom {
+  display: flex;
+  margin: 0.7rem;
+}
+header .links .logo .cbettabaa .nomPrenom .nom span, header .links .logo .cbettabaa .nomPrenom .prenom span {
+  font-size: 2rem;
+  font-weight: 900;
+  font-family: "Young Serif", serif;
+  text-transform: uppercase;
+  opacity: 0;
+}
+header .links .logo .cbettabaa .nomPrenom .nom span {
+  animation: leftToright 0.2s ease forwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+header .links .logo .cbettabaa .nomPrenom .prenom {
+  display: none;
+}
+header .links .logo .cbettabaa .nomPrenom .prenom span {
+  animation: rightToLeft 0.2s ease forwards;
+  animation-delay: calc(0.1s * var(--i));
+}
+header .links .logo:hover .credit span:last-child {
+  display: none;
+}
+header .links .logo:hover .nomPrenom .prenom {
+  display: flex;
 }
 header .links ul {
   display: flex;
   justify-content: center;
   align-self: center;
+}
+header .links ul li a {
+  opacity: 0;
+  animation: topToBotom 1s ease forwards;
+  animation-delay: calc(0.2s * var(--i));
 }
 header .links ul li a .btn-text {
   padding: 0 0.7rem;
@@ -90,14 +192,18 @@ header .links ul li a .btn-text .btn-text-inner {
 }
 header .links ul li a .btn-text::after {
   content: "";
-  width: 1rem;
-  height: 2px;
-  background-color: var(--black);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--white);
   opacity: 0;
-  transition: opacity 0.5s;
+  transition: opacity 1s;
 }
 header .links ul li a .btn-text:hover {
   padding-bottom: 0;
+}
+header .links ul li a .btn-text:hover .btn-text-inner {
+  color: var(--orange);
 }
 header .links ul li a .btn-text:hover::after {
   opacity: 1;
@@ -110,7 +216,7 @@ header .mainWrap {
   align-items: center;
 }
 header .mainWrap .specialisation {
-  width: 500px;
+  width: 320px;
   height: 200px;
   position: absolute;
   right: 0;
@@ -122,22 +228,42 @@ header .mainWrap .specialisation {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 header .mainWrap .specialisation .specialisationIcone {
   position: absolute;
-  top: -50%;
-  left: 0;
+  top: 0;
+  left: -10%;
 }
 header .mainWrap .specialisation .specialisationIcone i {
   transform: rotate(-45deg);
   font-size: 2rem;
   color: var(--white);
 }
+header .mainWrap .specialisation .specialisationName {
+  transition: all 1s;
+}
 header .mainWrap .specialisation .specialisationName h4 {
   display: flex;
   flex-direction: column;
-  color: var(--white);
+  justify-content: center;
+  align-items: center;
+}
+header .mainWrap .specialisation .specialisationName h4 div {
+  margin-right: 2px;
+}
+header .mainWrap .specialisation .specialisationName h4 div span {
+  margin: 2px;
   font-size: 2.5rem;
+  text-transform: uppercase;
+  transition: all 0.5s;
+  color: var(--white);
+  animation: movelettre 4s;
+}
+header .mainWrap .specialisation .specialisationName h4 div span:hover {
+  transform: scale(1.5, 1.5);
+  font-weight: 900;
+  padding-bottom: 0.8rem;
 }
 header .mainWrap .specialisation:before {
   content: "";
@@ -147,7 +273,7 @@ header .mainWrap .location {
   left: 0;
   top: 50%;
   transform: translate(0, -50%);
-  background-color: var(--black);
+  background-color: var(--orange);
 }
 header .mainWrap .location .locationName {
   width: 15rem;
@@ -168,7 +294,7 @@ header .mainWrap .location .locationName span {
 header .mainWrap .location .locationIcone {
   width: 6rem;
   height: 6rem;
-  background-color: var(--black);
+  background-color: var(--orange);
   border-radius: 50%;
   position: absolute;
   top: 0;
@@ -181,7 +307,7 @@ header .mainWrap .location .locationIcone {
 header .mainWrap .location .locationIcone .backgroundIcone {
   width: 4rem;
   height: 4rem;
-  background-color: var(--gray);
+  background-color: var(--black);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -190,24 +316,27 @@ header .mainWrap .location .locationIcone .backgroundIcone {
 header .mainWrap .location .locationIcone .backgroundIcone i {
   font-size: 2.2rem;
   animation: rotations 3s linear infinite;
-}
-header .mainWrap .location .locationIcone .backgroundIcone:hover i {
-  animation-play-state: paused;
+  color: var(--white);
+  transition: all 1s;
 }
 header .mainWrap .location:hover .locationName {
   width: 20rem;
   padding: 1rem 5cqi;
 }
+header .mainWrap .location:hover .backgroundIcone i {
+  animation-play-state: paused;
+  color: var(--white);
+}
 header .mainWrap .bigName {
   display: flex;
   flex-wrap: nowrap;
   position: absolute;
-  left: 0;
+  left: 2;
   bottom: 0rem;
   padding: 1rem 0;
 }
 header .mainWrap .bigName .namewrap h1 {
-  font-size: 15rem;
+  font-size: 10rem;
   display: flex;
   align-items: center;
 }
@@ -216,6 +345,8 @@ header .mainWrap .bigName .namewrap h1 span {
   color: var(--white);
   letter-spacing: 0.5rem;
   font-weight: 300;
+  font-family: "Dancing Script", cursive;
+  text-transform: uppercase;
 }
 header .mainWrap .bigName .namewrap h1::after {
   content: "";
@@ -223,8 +354,10 @@ header .mainWrap .bigName .namewrap h1::after {
   height: 0.8rem;
   background-color: var(--white);
   display: block;
-  animation: leftToright 5s linear infinite;
 }
 header .profilImg {
   transform: scale(1.5);
+  position: absolute;
+  top: 10;
+  right: 0;
 }/*# sourceMappingURL=global.css.map */
